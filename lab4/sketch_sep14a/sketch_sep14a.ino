@@ -25,21 +25,22 @@ void loop() {
 
   switch (serialIn[0]) {
     case 1:
+      noTone(buzzer);
       if (millis() - lastBlink > serialIn[1]) {
         ledState = !ledState;
         lastBlink = millis();
-        break;
-        case 2:
-          ledState = 0;
-          digitalWrite(buzzer, HIGH);
-          // tone(buzzer, serialIn[1]);
-          break;
-        default:
-          ledState = 0;
-          digitalWrite(buzzer, LOW);
-          // notone(buzzer);
-          break;
       }
+      break;
+    case 2:
+      ledState = 0;
+      //digitalWrite(buzzer, HIGH);
+      tone(buzzer, serialIn[1]);
+      break;
+    default:
+      ledState = 0;
+      //digitalWrite(buzzer, LOW);
+      noTone(buzzer);
+      break;
   }
 
   digitalWrite(ledPin, ledState);

@@ -11,13 +11,17 @@ void skrivStjerner(int stjerner) {
 }
 
 void skrivMangeStjerner(int stjerner) {
-  for (int i=0;i<stjerner;i++) {
+  for (int i=1;i<stjerner;i++) {
     skrivStjerner(i);
   }
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
+  Serial.println("skrivStjerner:");
+  skrivStjerner(5);
+  delay(1000);
+  Serial.println("skrivMangeStjerner:");
   skrivMangeStjerner(6);
   delay(1000);
 }
